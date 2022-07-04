@@ -1,6 +1,0 @@
-import itertools # Biblioteca úteis para combinação.
-string = 'ovo' # Digitar a palavra que será analisada no anagrama.
-anagramas = []
-for anagrama in itertools.permutations(string): # Uso do loop para o anagrama possiveis. Gere todas as permutações possiveis.
-    anagramas.append(''.join(anagrama))
-print(anagramas)
