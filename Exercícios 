@@ -1,0 +1,184 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled0.ipynb",
+      "provenance": [],
+      "authorship_tag": "ABX9TyOm3m5Vaz7eOPFveGIBcs9n",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/C-Lemia/desafio-capgemini/blob/main/Exerc%C3%ADcios%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Questão 01\n",
+        "\n",
+        "Escreva um algoritmo que mostre na tela uma escada de tamanho n utilizando o caractere * e espaços. A última linha não deve conter nenhum espaço.\n"
+      ],
+      "metadata": {
+        "id": "5IqBqqyVdtQw"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print('***\\n' '*****\\n' '*******\\n' '*********\\n' '***********\\n''*************'  )\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "p1zI0-VJdyhh",
+        "outputId": "3d0e6503-1383-4624-9512-9b9ee94cb3d3"
+      },
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "***\n",
+            "*****\n",
+            "*******\n",
+            "*********\n",
+            "***********\n",
+            "*************\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Questão 02 \n",
+        "Joana se inscreveu em uma rede social para se manter em contato com seus amigos. A página de cadastro exigia o preenchimento dos campos de nome e senha, porém a senha precisa ser forte. O site considera uma senha forte quando ela satisfaz os seguintes critérios:\n",
+        "\n",
+        "● Possui no mínimo 6 caracteres. \n",
+        "\n",
+        "● Contém no mínimo 1 digito. \n",
+        "\n",
+        "● Contém no mínimo 1 letra em minúsculo. \n",
+        "\n",
+        "● Contém no mínimo 1 letra em maiúsculo. \n",
+        "\n",
+        "● Contém no mínimo 1 caractere especial. Os caracteres especiais são: !@#$%^&*()-+ \n",
+        "\n",
+        "Joana digitou uma string aleatória no campo de senha, porém ela não tem certeza se é uma senha forte. Para ajudar Joana, construa um algoritmo que informe qual é o número mínimo de caracteres que devem ser adicionados para uma string qualquer ser considerada segura."
+      ],
+      "metadata": {
+        "id": "mva6OW-_fEkc"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import re # importando biblioteca de expressão regular, para achar padroes.\n",
+        "def digite_senha(senha): # criação de função.\n",
+        " \n",
+        " min_numero= 1\n",
+        " min_maiuscula= 1\n",
+        " min_minuscula = 1         # estabelecendo as regras da senha.\n",
+        " min_special= 1\n",
+        " min_senha= 6\n",
+        " max_senha= 8\n",
+        "\n",
+        " # varredura de cada item da senha:\n",
+        " \n",
+        " if len(senha) < min_senha:\n",
+        "     print('Tamanho minimo de:', min_senha)  # função len contando.\n",
+        " if len(senha) >max_senha:\n",
+        "     print('Tamanho máximo de:', max_senha)\n",
+        " if len(re.findall(r'[A-Z]', senha)) < min_maiuscula: \n",
+        "     print('Precisa conter maiúsculas!', min_maiuscula)\n",
+        " if len(re.findall(r'[a-z]', senha)) < min_minuscula:\n",
+        "     print('Precisa conter minúsculas!', min_minuscula)  #findall() varre a string da esquerda para a direita e encontra todas as correspondências do padrão\n",
+        " if len(re.findall(r'[0–9]', senha)) < min_numero:\n",
+        "     print('Precisa conter números!', min_numero)\n",
+        " if len(re.findall(r'[@#$]', senha)) < min_special:\n",
+        "     print('Precisa conter caracteres especiais “@#$”',       min_special)\n",
+        " else:\n",
+        "     print('senha validada')\n",
+        "\n",
+        "digite_senha('Camila9@') # testar uma senha aqui."
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "IcvSY7EOfRAe",
+        "outputId": "31e6a32a-5843-4c19-ee3a-3f7ccfa70ae6"
+      },
+      "execution_count": 18,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "senha validada\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Questão 03\n",
+        "\n",
+        "Duas palavras podem ser consideradas anagramas de si mesmas se as letras de uma palavra podem ser realocadas para formar a outra palavra. Dada uma string qualquer, desenvolva um algoritmo que encontre o número de pares de substrings que são anagramas."
+      ],
+      "metadata": {
+        "id": "RZT6qXfJmJTl"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "import itertools # Biblioteca úteis para combinação.\n",
+        "\n",
+        "palavra = 'cama' # digite aqui sua palavra.\n",
+        "possiveis_anagramas = []\n",
+        "for anagrama in itertools.permutations(palavra):\n",
+        "    possiveis_anagramas.append(''.join(anagrama))# append coloca um possivel combinação na lista.\n",
+        "                                                # join uni todos os elementos.\n",
+        "print(possiveis_anagramas)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "9uYxKCW6mLIm",
+        "outputId": "a787a71e-3edf-4378-ca29-d8e85b270c89"
+      },
+      "execution_count": 22,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['cama', 'caam', 'cmaa', 'cmaa', 'caam', 'cama', 'acma', 'acam', 'amca', 'amac', 'aacm', 'aamc', 'mcaa', 'mcaa', 'maca', 'maac', 'maca', 'maac', 'acam', 'acma', 'aacm', 'aamc', 'amca', 'amac']\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
